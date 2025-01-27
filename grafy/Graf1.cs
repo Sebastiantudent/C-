@@ -61,28 +61,7 @@ namespace Pr.domowaGrafy
         }
         //List<Element>, Dict<NoteG1,T<int,NodeG1>>, Dict<NoteG1,Element>
 
-         List<Element> AlgorytmDijkstry(NoteG1 start)
-        {
-            var tabelka = this.PrzygotujTabelke(start);
-            var S = new List<NoteG1>();
-            int i = 1;
-            foreach (var e in this.Edges)
-            {
-                var kandydaci = tabelka.Where(e => !S.Contains(e.węzeł)).ToList();
-                var kandydat = kandydaci.OrderBy(e => e.dystans).First();
-                if (kandydat != null) {
-                    tabelka[i].dystans += kandydat.dystans;
-                    kandydat.poprzednik = tabelka[i].poprzednik;
-                    i++;
-                }
-                else
-                {
-                    break;
-                }
-
-            }
-            return tabelka;
-        }
+        
         // nie void
         List<Element> PrzygotujTabelke(NoteG1 start)
         {
